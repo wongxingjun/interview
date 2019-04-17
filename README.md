@@ -1,6 +1,6 @@
 <div align="center">
 
-[![](images/coding.png)](https://e.coding.net/?utm_source=huiha&utm_medium=banner&utm_campaign=march2019)
+[![](images/coding.png)](https://coding.net/?utm_source=huiha&utm_medium=banner&utm_campaign=march2019)
 
 📘 Summary
 &emsp;&emsp; | &emsp;&emsp;
@@ -17,7 +17,7 @@
 
 🙏 仓库内容如有错误或改进欢迎 issue 或 pr，建议或讨论可在 [#12](https://github.com/huihut/interview/issues/12) 提出。由于本人水平有限，仓库中的知识点有来自本人原创、读书笔记、书籍、博文等，非原创均已标明出处，如有遗漏，请 issue 提出。本仓库遵循 CC BY-NC-SA 4.0 协议，转载请注明出处。
 
-🍭 如果仓库内容对你有所帮助，可以点击浏览一下顶部的 [coding](https://e.coding.net/?utm_source=huiha&utm_medium=banner&utm_campaign=march2019) 广告支持我。~~（coding 的公仔还是挺可爱的。）~~
+🍭 如果仓库内容对你有所帮助，可以点击浏览一下顶部的 [coding](https://coding.net/?utm_source=huiha&utm_medium=banner&utm_campaign=march2019) 广告支持我。~~（coding 的公仔还是挺可爱的。）~~
 
 </details>
 
@@ -121,13 +121,13 @@ int* const function7();     // 返回一个指向变量的常指针，使用：i
 
 ```cpp
 // 声明1（加 inline，建议使用）
-inline int functionName(int first, int secend,...);
+inline int functionName(int first, int second,...);
 
 // 声明2（不加 inline）
-int functionName(int first, int secend,...);
+int functionName(int first, int second,...);
 
 // 定义
-inline int functionName(int first, int secend,...) {/****/};
+inline int functionName(int first, int second,...) {/****/};
 
 // 类内定义，隐式内联
 class A {
@@ -973,16 +973,16 @@ int main()
 
 #### 定位 new
 
-定位 new（placement new）允许我们向 new 传递额外的参数。
+定位 new（placement new）允许我们向 new 传递额外的地址参数，从而在预先指定的内存区域创建对象。
 
 ```cpp
-new (palce_address) type
-new (palce_address) type (initializers)
-new (palce_address) type [size]
-new (palce_address) type [size] { braced initializer list }
+new (place_address) type
+new (place_address) type (initializers)
+new (place_address) type [size]
+new (place_address) type [size] { braced initializer list }
 ```
 
-* `palce_address` 是个指针
+* `place_address` 是个指针
 * `initializers` 提供一个（可能为空的）以逗号分隔的初始值列表
 
 ### delete this 合法吗？
@@ -1227,7 +1227,7 @@ class doSomething(Flyable *obj)                 // 做些事情
 39. 明智而审慎地使用 private 继承（private 继承意味着 is-implemented-in-terms-of（根据某物实现出），尽可能使用复合，当 derived class 需要访问 protected base class 的成员，或需要重新定义继承而来的时候 virtual 函数，或需要 empty base 最优化时，才使用 private 继承）
 40. 明智而审慎地使用多重继承（多继承比单一继承复杂，可能导致新的歧义性，以及对 virtual 继承的需要，但确有正当用途，如 “public 继承某个 interface class” 和 “private 继承某个协助实现的 class”；virtual 继承可解决多继承下菱形继承的二义性问题，但会增加大小、速度、初始化及赋值的复杂度等等成本）
 41. 了解隐式接口和编译期多态（class 和 templates 都支持接口（interfaces）和多态（polymorphism）；class 的接口是以签名为中心的显式的（explicit），多态则是通过 virtual 函数发生于运行期；template 的接口是奠基于有效表达式的隐式的（implicit），多态则是通过 template 具现化和函数重载解析（function overloading resolution）发生于编译期）
-42. 了解 typename 的双重意义（声明 template 类型参数是，前缀关键字 class 和 typename 的意义完全相同；请使用关键字 typename 标识嵌套从属类型名称，但不得在基类列（base class lists）或成员初值列（member initialization list）内以它作为 basee class 修饰符）
+42. 了解 typename 的双重意义（声明 template 类型参数是，前缀关键字 class 和 typename 的意义完全相同；请使用关键字 typename 标识嵌套从属类型名称，但不得在基类列（base class lists）或成员初值列（member initialization list）内以它作为 base class 修饰符）
 43. 学习处理模板化基类内的名称（可在 derived class templates 内通过 `this->` 指涉 base class templates 内的成员名称，或藉由一个明白写出的 “base class 资格修饰符” 完成）
 44. 将与参数无关的代码抽离 templates（因类型模板参数（non-type template parameters）而造成代码膨胀往往可以通过函数参数或 class 成员变量替换 template 参数来消除；因类型参数（type parameters）而造成的代码膨胀往往可以通过让带有完全相同二进制表述（binary representations）的实现类型（instantiation types）共享实现码）
 45. 运用成员函数模板接受所有兼容类型（请使用成员函数模板（member function templates）生成 “可接受所有兼容类型” 的函数；声明 member templates 用于 “泛化 copy 构造” 或 “泛化 assignment 操作” 时还需要声明正常的 copy 构造函数和 copy assignment 操作符）
@@ -1863,7 +1863,7 @@ B树/B+树 |O(log<sub>2</sub>n) |   |
 * 锁机制：包括互斥锁/量（mutex）、读写锁（reader-writer lock）、自旋锁（spin lock）、条件变量（condition）
     * 互斥锁/量（mutex）：提供了以排他方式防止数据结构被并发修改的方法。
     * 读写锁（reader-writer lock）：允许多个线程同时读共享数据，而对写操作是互斥的。
-    * 自旋锁（spin lock）与互斥锁类似，都是为了保护共享资源。互斥锁是当资源被占用，申请者进入睡眠状态；而自旋锁则循环检测保持着是否已经释放锁。
+    * 自旋锁（spin lock）与互斥锁类似，都是为了保护共享资源。互斥锁是当资源被占用，申请者进入睡眠状态；而自旋锁则循环检测保持者是否已经释放锁。
     * 条件变量（condition）：可以以原子的方式阻塞进程，直到某个特定条件为真为止。对条件的测试是在互斥锁的保护下进行的。条件变量始终与互斥锁一起使用。
 * 信号量机制(Semaphore)
     * 无名线程信号量
@@ -2056,9 +2056,9 @@ int main()
 
 > 本节部分知识点来自《计算机网络（第 7 版）》
 
-计算机经网络体系结构：
+计算机网络体系结构：
 
-![计算机经网络体系结构](images/计算机经网络体系结构.png)
+![计算机网络体系结构](images/计算机网络体系结构.png)
 
 ### 各层作用及协议
 
@@ -2080,7 +2080,7 @@ int main()
 
 通道：
 * 单向通道（单工通道）：只有一个方向通信，没有反方向交互，如广播
-* 双向交替通行（半双工通信）：通信双方都可发消息，但不能同时发送或接收
+* 双向交替通信（半双工通信）：通信双方都可发消息，但不能同时发送或接收
 * 双向同时通信（全双工通信）：通信双方可以同时发送和接收信息
 
 通道复用技术：
@@ -3443,7 +3443,7 @@ int main( void )
 
 包括勘误的 Issue、PR，排序按照贡献时间。
 
-[tamarous](https://github.com/tamarous)、[i0Ek3](https://github.com/i0Ek3)、[sniper00](https://github.com/sniper00)、[blackhorse001](https://github.com/blackhorse001)、[houbaron](https://github.com/houbaron)、[Qouan](https://github.com/Qouan)、[2329408386](https://github.com/2329408386)、[FlyingfishMORE](https://github.com/FlyingfishMORE)、[Ematrix163](https://github.com/Ematrix163)、[ReturnZero23](https://github.com/ReturnZero23)、[kelvinkuo](https://github.com/kelvinkuo)、[henryace](https://github.com/henryace)、[xinghun](https://github.com/xinghun)、[maokelong](https://github.com/maokelong)、[easyYao](https://github.com/easyYao)、[FengZiYjun](https://github.com/FengZiYjun)、[shangjiaxuan](https://github.com/shangjiaxuan)、[kwongtailau](https://github.com/kwongtailau)、[asky991](https://github.com/asky991)、[traviszeng](https://github.com/traviszeng)、[kele1997](https://github.com/kele1997)
+[tamarous](https://github.com/tamarous)、[i0Ek3](https://github.com/i0Ek3)、[sniper00](https://github.com/sniper00)、[blackhorse001](https://github.com/blackhorse001)、[houbaron](https://github.com/houbaron)、[Qouan](https://github.com/Qouan)、[2329408386](https://github.com/2329408386)、[FlyingfishMORE](https://github.com/FlyingfishMORE)、[Ematrix163](https://github.com/Ematrix163)、[ReturnZero23](https://github.com/ReturnZero23)、[kelvinkuo](https://github.com/kelvinkuo)、[henryace](https://github.com/henryace)、[xinghun](https://github.com/xinghun)、[maokelong](https://github.com/maokelong)、[easyYao](https://github.com/easyYao)、[FengZiYjun](https://github.com/FengZiYjun)、[shangjiaxuan](https://github.com/shangjiaxuan)、[kwongtailau](https://github.com/kwongtailau)、[asky991](https://github.com/asky991)、[traviszeng](https://github.com/traviszeng)、[kele1997](https://github.com/kele1997)、[hxdnshx](https://github.com/hxdnshx)、[a74731248](https://github.com/a74731248)、[qvjp](https://github.com/qvjp)
 
 </details>
 
